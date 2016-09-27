@@ -11,16 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829133712) do
+ActiveRecord::Schema.define(version: 20160926095716) do
 
   create_table "books", force: :cascade do |t|
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
     t.string   "title",      limit: 255
     t.string   "author",     limit: 255
-    t.string   "isbn",       limit: 255
+    t.date     "issued_on"
+    t.date     "due_date"
+    t.integer  "rating",     limit: 4
     t.integer  "user_id",    limit: 4
-    t.string   "rating",     limit: 255
+    t.string   "isbn",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "first_name", limit: 255
+    t.string   "last_name",  limit: 255
+    t.string   "address",    limit: 255
+    t.string   "contact",    limit: 255
+    t.integer  "role_id",    limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "roles", force: :cascade do |t|
@@ -36,11 +49,6 @@ ActiveRecord::Schema.define(version: 20160829133712) do
     t.datetime "reset_password_sent_at"
     t.datetime "created_at",                                      null: false
     t.datetime "updated_at",                                      null: false
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.integer  "book_id",                limit: 4
-    t.string   "address",                limit: 255
-    t.string   "phone_no",               limit: 255
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

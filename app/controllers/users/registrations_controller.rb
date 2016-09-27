@@ -1,28 +1,28 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_action :configure_sign_up_params, only: [:create]
 # before_action :configure_account_update_params, only: [:update]
-
+  after_action :create_profile_after_user_reg, only: [:create]
   # GET /resource/sign_up
   # def new
   #   super
   # end
 
-  # POST /resource
+  # # POST /resource
   # def create
   #   super
   # end
 
-  # GET /resource/edit
+  # # GET /resource/edit
   # def edit
   #   super
   # end
 
-  # PUT /resource
+  # # PUT /resource
   # def update
   #   super
   # end
 
-  # DELETE /resource
+  # # DELETE /resource
   # def destroy
   #   super
   # end
@@ -37,6 +37,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # protected
+  
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -57,4 +58,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+  def create_profile_after_user_reg
+    user = User.find(current_user.id)
+    role = Role.find_by_name('user')
+    Rails.logger.info "Role is  ======> #{role}"
+    profile = user.create_profile(:role_id => role.id)
+    profile.save!
+  end
 end

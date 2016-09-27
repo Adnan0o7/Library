@@ -16,16 +16,76 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Products</a></li>
-        <li><a href="#">Deals</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Contact</a></li>
+        <li>
+          <%= link_to('Home', root_path) %> 
+        </li>
+        <li>
+          <%= link_to('My Profile', profile_path(@profile)) %>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="users/sign_in"<span class="glyphicon glyphicon-user"></span>Sign In</a></li>
-        <li><a href="users/sign_up"<span class="glyphicon glyphicon-user"></span>Sign Up</a></li>
+        <% if user_signed_in? %>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>      
+          </li>
+        <% else %>
+          <li>
+          <%= link_to('Login', new_user_session_path) %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
 </nav>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 1</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 2</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 3</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 4</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 5</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Genre 6</div>
+        <div class="panel-body"><img src="http://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </div>
+</div><br><br>

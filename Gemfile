@@ -33,9 +33,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # authentication
 gem 'devise'
-
+#File Upload
+gem "paperclip", "~> 5.0.0"
 # authorization
-gem 'cancan'
+gem 'cancancan','~> 1.10'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
