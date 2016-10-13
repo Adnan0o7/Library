@@ -1,5 +1,5 @@
 class ProfilesController < ApplicationController
-  # load_and_authorize_resource
+  load_and_authorize_resource
   # before_action :set_current_user_profile, only: [:edit, :update, :destroy]
   before_action :set_profile, only: [:show]
 
@@ -9,12 +9,16 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-     @profiles = Profile.all
+    @user = User.find(current_user.id)
+    @profile = Profile.find_by_user_id(@user.id)
+    @profiles = Profile.all
+    @books = Book.all
   end
 
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @books = Book.all
     @user = User.find(current_user.id)
     Rails.logger.info "@user is =======> #{@user.inspect}"
     @own_profile = @profile.user_id == current_user.id ? true : false
@@ -28,7 +32,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   def edit
     @user = User.find(current_user.id)
-    @profile = Profile.find_by_user_id(@user.id)
+    @own_profile = @profile.user_id == current_user.id ? true : false
+    puts "------------------#{@profile.inspect}--------------------"
   end
 
   # POST /profiles

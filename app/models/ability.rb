@@ -14,6 +14,7 @@ class Ability
       can [:crud], Book
     else
       can [:ru], Profile, :id => user.id
+      can [:r], Book
     end
     # Define abilities for the passed in user here. For example:
     #

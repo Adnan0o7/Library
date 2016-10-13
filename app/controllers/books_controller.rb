@@ -4,6 +4,8 @@ class BooksController < ApplicationController
   # GET /books
   # GET /books.json
   def index
+    @profile = Profile.find_by_user_id(current_user.id)
+    @user = User.find(current_user.id)
     @books = Book.all
   end
 
@@ -14,6 +16,8 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
+    @profile = Profile.find_by_user_id(current_user.id)
+    @user = User.find(current_user.id)
     @book = Book.new
   end
 
