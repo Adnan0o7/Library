@@ -12,6 +12,9 @@ class BooksController < ApplicationController
   # GET /books/1
   # GET /books/1.json
   def show
+    @profile = Profile.find_by_user_id(current_user.id)
+    @user = User.find(current_user.id)
+    @books = Book.all
   end
 
   # GET /books/new
@@ -73,6 +76,6 @@ class BooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def book_params
-      params.require(:book).permit(:title, :author, :issued_on, :due_date, :rating, :user_id, :isbn)
+      params.require(:book).permit(:title, :author, :issued_on, :due_date, :rating, :user_id, :isbn, :avatar)
     end
 end

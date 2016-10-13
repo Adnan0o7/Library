@@ -12,6 +12,6 @@
  *
  @import "bootstrap-sprockets";
  @import "bootstrap";
- @inport "tree";
+*= require_tree
  @import "self";
  */

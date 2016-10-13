@@ -1,38 +1,17 @@
+<%= render 'navbar' %>
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @book.author %>
-</p>
-
-<p>
-  <strong>Issued on:</strong>
-  <%= @book.issued_on %>
-</p>
-
-<p>
-  <strong>Due date:</strong>
-  <%= @book.due_date %>
-</p>
-
-<p>
-  <strong>Rating:</strong>
-  <%= @book.rating %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @book.user_id %>
-</p>
-
-<p>
-  <strong>Isbn:</strong>
-  <%= @book.isbn %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
-<%= link_to 'Back', books_path %>
+<div class="container">
+  <div class="col-sm-4 text-left">
+    <div class="panel panel-primary">
+      <div class="panel-heading">Book Details</div>
+        <div class="panel-body">
+          <%= image_tag @book.avatar.url(:medium) %>
+          <h4><strong>Title:</strong><%= @book.title %></h4>
+          <h4><strong>Author:</strong><%= @book.author %></h4>
+          <h4><strong>Rating:</strong><%= @book.rating %></h4>
+          <h4><strong>Isbn:</strong><%= @book.isbn %></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
