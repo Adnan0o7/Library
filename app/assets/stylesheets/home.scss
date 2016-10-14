@@ -16,13 +16,26 @@ body, html {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.jumbotron {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-bottom: 00px !important;
+    color: inherit;
+    background: rgba(100, 104, 150, 0.5) !important;
+}
+body {
+      position: relative;
+  }
+  .affix {
+      top:0;
+      width: 100%;
+      z-index: 9999 !important;
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
 
- .jumbo {
-    /* IE8 and below */
-    background: rgb(200, 54, 54);
-    /* all other browsers */
-    background: rgba(200, 54, 54, 0.5);
-}
-.white {
-    background: rgb(255, 255, 255);
-}
+  .affix ~ .container-fluid {
+     position: relative;
+     top: 50px;
+  }
