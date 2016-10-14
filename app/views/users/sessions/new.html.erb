@@ -1,12 +1,24 @@
-<div class="border-form-div">
-  <h2>Sign in</h2>
-  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-    <%= f.email_field :email, :autofocus => true, :placeholder => 'Email address' %>
-    <%= f.password_field :password, :placeholder => 'Password' %>
-    <% if devise_mapping.rememberable? -%>
-      <label class="checkbox"> <%= f.label :remember_me %> Rembmer me </label>
-    <% end -%>
-    <%= f.submit "Sign in", :class=> 'btn btn-primary' %>
-  <% end %>
+
+  <div class="container">
+    <div class='col-sm-4' style='float:none; background:rgba(100, 104, 150, 0.4)'>
+      <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :class=>'form') do |f|%>
+        <div class='fieldset'>
+        <legend>Sign In</legend>
+
+          <div class="form-group">
+            <%= f.label 'Email' %>
+            <%= f.email_field :email, :autofocus => true, :class=>'form-control', :placeholder => 'Email address' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label 'Password' %>
+            <%= f.password_field :password, :class=>'form-control', :placeholder => 'Password' %>
+          </div>
+
+          <%= f.submit "Let me in", :class=> 'btn btn-primary' %>
+         </div>  
+      <% end %>
+    </div>
+  </div>
+
   <%= render "devise/shared/links" %>
-</div>
