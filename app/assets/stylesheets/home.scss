@@ -21,7 +21,7 @@ body, html {
     padding-bottom: 30px;
     margin-bottom: 00px !important;
     color: inherit;
-    background: rgba(100, 104, 150, 0.5) !important;
+    background: rgba(100, 100, 150, 0.7) !important;
 }
 body {
       position: relative;
@@ -38,4 +38,15 @@ body {
   .affix ~ .container-fluid {
      position: relative;
      top: 50px;
+  }
+
+  .carousel {
+    background: rgba(100, 100, 150, 0.7);
+  }
+
+ .carousel-inner > .item > img,
+  .carousel-inner > .item > a > img {
+      width: 35%;
+      height:500px !important;
+      margin: auto;
   }

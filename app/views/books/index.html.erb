@@ -4,8 +4,11 @@
 
 <div class="container">
   <% @books.each do |book| %>
-    <div class="row">
-      <%= link_to(image_tag(book.avatar.url(:medium)),book_path(book)) %>
-    </div> 
+    <div class="col-sm-3">
+      <div class="row">
+        <%= link_to(image_tag(book.avatar.url(:medium)),book_path(book)) %>
+      </div>
+      <br>
+    </div>
   <% end %>
 </div>

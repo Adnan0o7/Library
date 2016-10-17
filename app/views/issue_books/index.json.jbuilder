@@ -1,0 +1,1 @@
+json.array! @issue_books, partial: 'issue_books/issue_book', as: :issue_book
