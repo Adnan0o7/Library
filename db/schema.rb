@@ -11,13 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161017145958) do
+ActiveRecord::Schema.define(version: 20161019123704) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",               limit: 255
     t.string   "author",              limit: 255
-    t.date     "issued_on"
-    t.date     "due_date"
     t.integer  "rating",              limit: 4
     t.integer  "user_id",             limit: 4
     t.string   "isbn",                limit: 255
@@ -30,8 +28,13 @@ ActiveRecord::Schema.define(version: 20161017145958) do
   end
 
   create_table "issue_books", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.decimal  "book_id",              precision: 10
+    t.boolean  "issued",     limit: 1
+    t.decimal  "user_id",              precision: 10
+    t.date     "issued_on"
+    t.date     "due_date"
   end
 
   create_table "profiles", force: :cascade do |t|

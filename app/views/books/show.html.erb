@@ -1,23 +1,26 @@
 <%= render 'navbar' %>
 
-<div class="container">
-  <div class="col-sm-8 text-left">
-    <div class="panel panel-primary">
-      <div class="panel-heading">Book Details</div>
-        <div class="col-sm-5 text-left">
-          <div class="panel-body">
-            <%= image_tag @book.avatar.url(:medium) %>
-            <h4><strong>Title:</strong><%= @book.title %></h4>
-            <h4><strong>Author:</strong><%= @book.author %></h4>
-            <h4><strong>Rating:</strong><%= @book.rating %></h4>
-            <h4><strong>Isbn:</strong><%= @book.isbn %></h4>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-2 text-left">
-      </div>
-
+<div class="container-fluid text-center">
+  <div class="row content">
+    <div class="col-sm-2 sidenav">
+      <ul class="nav nav-pills nav-stacked">
+        <li>
+          <button class="btn btn-success btn-block"><%= link_to 'Issue This Book', edit_book_path(@book) %></button>
+        </li>
+        <li>
+          <% if can? :crud, Book %>
+            <button class="btn btn-primary btn-block"><%= link_to 'Edit Book Details', edit_book_path(@book) %></button>
+            <button class="btn btn-danger btn-block"><%= link_to 'Delete This Book', @book, :method => :delete, data: { confirm: 'Are you sure?' } %></button>
+          <% end %>
+        </li>
+      </ul>
     </div>
-  </div>
+    <div class="col-sm-8 text-left">
+      <%= image_tag @book.avatar.url(:medium) %>
+      <h4><strong>Title:</strong><%= @book.title %></h4>
+      <h4><strong>Author:</strong><%= @book.author %></h4>
+      <h4><strong>Rating:</strong><%= @book.rating %></h4>
+      <h4><strong>Isbn:</strong><%= @book.isbn %></h4>
+    </div>
+  </row>
 </div>

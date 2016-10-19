@@ -4,16 +4,16 @@
 <div class="container-fluid text-center">
   <div class="row content">
     <div class="col-sm-2 sidenav">
-      <ul class="nav nav-stacked">
+      <ul class="nav nav-pills nav-stacked">
         <li>
-          <button class="btn btn-default btn-block"><%= link_to 'Edit Profile', edit_profile_path(@profile) %></button>
+          <button class="btn btn-primary btn-block"><%= link_to 'Edit Profile', edit_profile_path(@profile) %></button>
         </li>
         <li>  
           <% if can? :crud, Profile %>
-            <button class="btn btn-default btn-block"><%= link_to "Users List", profiles_path %></button>
+            <button class="btn btn-primary btn-block"><%= link_to "Users List", profiles_path %></button>
           <% end %>
           <% if can? :crud, Book %>
-            <button class="btn btn-default btn-block"><%= link_to "Add New Book", new_book_path %></button>
+            <button class="btn btn-primary btn-block"><%= link_to "Add New Book", new_book_path %></button>
           <% end %>
         </li>
       </ul>
