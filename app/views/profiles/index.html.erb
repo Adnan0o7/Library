@@ -22,8 +22,8 @@
           <td><%= profile.last_name %></td>
           <td><%= profile.address %></td>
           <td><%= profile.contact %></td>
-          <td><button class="btn btn-primary"> <%= link_to 'Edit', edit_profile_path(profile) %></button></td>
-          <td><button class"btn btn-danger"> <%= link_to 'Delete', profile, method: :delete, data: { confirm: 'Are you sure?' } %></button></td>
+          <td><%= link_to 'Edit', edit_profile_path(profile),:class => 'btn btn-primary btn-block' %></td>
+          <td><%= link_to 'Delete', profile,:class => 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
       <% end %>
     </tbody>

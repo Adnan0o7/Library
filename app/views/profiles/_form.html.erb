@@ -1,34 +1,41 @@
+<div class="container">
+  <div class='col-sm-8' style='float:none; background'>
+    <%= form_for @profile do |f| %>
+      <% if @profile.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-<%= form_for @profile do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
-
-      <ul>
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+          <ul>
+          <% @profile.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="form-group">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+      <div class="form-group">
+        <%= f.label 'First Name' %>
+        <%= f.text_field :first_name, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Last Name' %>
+        <%= f.text_field :last_name, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Address' %>
+        <%= f.text_field :address, :class => 'form-control' %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label 'Contact' %>
+        <%= f.text_field :contact, :class => 'form-control' %>
+      </div>
+
+        <%= f.submit 'Submit',:class => 'btn btn-primary'  %>
+      
+    <% end %>
+
   </div>
-  <div class="form-group">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="form-group">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="form-group">
-    <%= f.label :contact %><br>
-    <%= f.text_field :contact %>
-  </div>
-  <div class="form-actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

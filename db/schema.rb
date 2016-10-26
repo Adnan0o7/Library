@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161019123704) do
+ActiveRecord::Schema.define(version: 20161024140719) do
 
   create_table "books", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -25,16 +25,9 @@ ActiveRecord::Schema.define(version: 20161019123704) do
     t.string   "avatar_content_type", limit: 255
     t.integer  "avatar_file_size",    limit: 4
     t.datetime "avatar_updated_at"
-  end
-
-  create_table "issue_books", force: :cascade do |t|
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.decimal  "book_id",              precision: 10
-    t.boolean  "issued",     limit: 1
-    t.decimal  "user_id",              precision: 10
-    t.date     "issued_on"
-    t.date     "due_date"
+    t.boolean  "issued",              limit: 1
+    t.date     "date_of_issue"
+    t.date     "return_date"
   end
 
   create_table "profiles", force: :cascade do |t|

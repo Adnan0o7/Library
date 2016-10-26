@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_book, only: [:show, :edit, :update, :destroy, :issue, :return]
 
 	def index
     @profile = Profile.find_by_user_id(current_user.id)
@@ -17,6 +17,8 @@ class BooksController < ApplicationController
     @profile = Profile.find_by_user_id(current_user.id)
     @user = User.find(current_user.id)
     @books = Book.all
+    @book_issued = (@book.issued == true)
+    @display_return_link = @book_issued && (@book.user_id == current_user.id)
   end
 
   def create
@@ -40,6 +42,22 @@ class BooksController < ApplicationController
     else
       render :action => :edit
     end
+  end
+
+  def issue
+    @book.user_id = current_user.id
+    @book.issued = true
+    @book.date_of_issue = Time.now
+    @book.save
+    redirect_to books_path
+  end
+
+  def return
+    @book.user_id = nil
+    @book.issued = false
+    @book.return_date = Time.now
+    @book.save
+    redirect_to books_path
   end
 
   def destroy
