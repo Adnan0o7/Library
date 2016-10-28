@@ -5,19 +5,10 @@
     <div class="col-sm-2 sidenav">
       <ul class="nav nav-pills nav-stacked">
         <li>
-          <% if @display_return_link %>
-            <%= link_to 'Return This Book', return_book_path(@book),:method => :put, data: {confirm: 'Are you sure'},:class => 'btn btn-block btn-success' %>
-          <% elsif @book_issued %>
-            <%= link_to 'Book already issued', '#',:class => 'btn btn-block btn-success disabled' %>
-          <% else %>
-            <%= link_to 'Issue This Book', issue_book_path(@book),:method => :put, data: {confirm: 'Are you sure'},:class => 'btn btn-block btn-success' %>
-          <% end %>
+          <%= display_issue_or_return_link(@book) %>
        </li>
         <li>
-          <% if can? :crud, Book %>
-            <%= link_to 'Edit Book Details', edit_book_path(@book), :class => 'btn btn-block btn-primary' %>
-            <%= link_to 'Delete This Book', @book, :class => 'btn btn-block btn-danger', :method => :delete, data: { confirm: 'Are you sure?' } %>
-          <% end %>
+          <%= display_crud_link(@book).html_safe %>
         </li>
       </ul>
     </div>

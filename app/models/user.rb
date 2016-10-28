@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
   devise :database_authenticatable, :registerable,
          :recoverable
+  before_destroy :check_issued_books
 
   def is_superadmin?
     self.role.name == 'superadmin'
@@ -22,5 +23,12 @@ class User < ActiveRecord::Base
 
   def name
     self.profile.first_name.nil? ? self.email : (self.profile.first_name + ' ' + self.profile.last_name)
+  end
+
+  private
+  def check_issued_books
+    errors.add(:base, "Cannot destroy user as book is issued by him..!") unless user.books.blank?
+
+    errors.blank?
   end
 end

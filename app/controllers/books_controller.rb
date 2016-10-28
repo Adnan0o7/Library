@@ -17,8 +17,6 @@ class BooksController < ApplicationController
     @profile = Profile.find_by_user_id(current_user.id)
     @user = User.find(current_user.id)
     @books = Book.all
-    @book_issued = (@book.issued == true)
-    @display_return_link = @book_issued && (@book.user_id == current_user.id)
   end
 
   def create
