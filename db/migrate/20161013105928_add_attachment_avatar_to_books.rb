@@ -1,4 +1,4 @@
-class AddAttachmentAvatarToBooks < ActiveRecord::Migration
+class AddAttachmentAvatarToBooks < ActiveRecord::Migration[5.1]
   def self.up
     change_table :books do |t|
       t.attachment :avatar

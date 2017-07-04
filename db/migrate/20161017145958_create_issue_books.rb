@@ -1,4 +1,4 @@
-class CreateIssueBooks < ActiveRecord::Migration
+class CreateIssueBooks < ActiveRecord::Migration[5.1]
   def change
     create_table :issue_books do |t|
 
